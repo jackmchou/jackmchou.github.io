@@ -14,7 +14,7 @@
 <meta property="og:description" content="What I did yesterday?Deploying to metalink.jackmchou.com, learned a lot about user accounts in linux and practiced a bunch of command line and using nano and configuring nginx What I’m doing today?Pre">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-31T20:40:16.000Z">
-<meta property="article:modified_time" content="2020-03-31T20:40:16.566Z">
+<meta property="article:modified_time" content="2020-03-31T22:01:01.606Z">
 <meta property="article:author" content="JC">
 <meta name="twitter:card" content="summary">
     
@@ -76,6 +76,8 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/2020/04/01/2020-04-1/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
         
         <li><a class="icon" href="/2020/03/30/2020-03-30/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
@@ -131,7 +133,7 @@
       
         <time datetime="2020-03-31T20:40:16.000Z" itemprop="datePublished">2020-03-31</time>
         
-        (Updated: <time datetime="2020-03-31T20:40:16.566Z" itemprop="dateModified">2020-03-31</time>)
+        (Updated: <time datetime="2020-03-31T22:01:01.606Z" itemprop="dateModified">2020-03-31</time>)
         
       
     </div>
@@ -147,8 +149,8 @@
 
   <div class="content" itemprop="articleBody">
     <p>What I did yesterday?<br>Deploying to metalink.jackmchou.com, learned a lot about user accounts in linux and practiced a bunch of command line and using nano and configuring nginx</p>
-<p>What I’m doing today?<br>Preparing for presentation.</p>
-<p>My name is Jack and I’m a full stack developer on the metalink project<br>I’ll talk about the concert search feature and trace it starting from the front end to the back and something that I enjoyed about working on the project. This feature allows the user to search for metal concerts via zip code.<br>The user enters a zip code and the handleChange method on line 22 first checks if theres already a timer running and if there is, it clears it. Otherwise it waits a second in between changes to invoke the getConcerts method on line 28, the getConcerts method sets the message state to loading to let the user know that data is being retrieved and then the if conditional checks the postalcode input with regular expression to see if the postalcode is a valid postal code, if it is, it sends a request to our concerts api,<br>The api in index.js line 114 will then send the request parameter, in this case a zip code, the genre classificationId for metal, as well as our api key stored in our environment variable file to the ticket master api. It does a check for valid zip code again if not valid it will return an error message to the client, if valid it sends another fetch request to the API and package the result into the format appropriate for our front end, which in this case would be an array of objects with the information about the event.<br>With the result returned, getConcerts will then set the concerts state with the returned data and finally it sets the loading state toggle to false and sets the message state to an empty string. Otherwise, it sets the error message to valid us zip code to let the user know that a valid zip code is required.<br>My favorite part of the project was probably getting frustrated by new technology and learning about them and learning about myself in the process. I learned the different ways to persist state because I had no idea how to do it and figuring it out was pretty fun and rewarding.<br>With that I’ll pass it over to Keith, our team lead.</p>
+<p>What I’m doing today?<br>Preparing for presentation, review basic porfolio req and add tasks to meistertask</p>
+<p>My name is Jack and I’m a full stack developer on the metalink project<br>I’ll talk about the concert search feature and trace it starting from the front end to the back and some things that I enjoyed about working on the project. This feature allows the user to search for metal concerts via zip code.<br>The user enters a zip code and the handleChange method on line 22 first checks if theres already a timer running and if there is, it clears it. Otherwise it waits a second in between changes to invoke the getConcerts method on line 28, the getConcerts method sets the message state to loading to let the user know that data is being retrieved and then the if conditional checks the postalcode input with regular expression to see if the postalcode is a valid postal code, if it is, it sends a request to our concerts api,<br>The api in index.js line 114 will then send the request parameter, in this case a zip code, the genre classificationId for metal, as well as our api key stored in our environment variable file to the ticket master api. It does a check for valid zip code again if not valid it will return an error message to the client, if valid it sends another fetch request to the API and package the result into the format appropriate for our front end, which in this case would be an array of objects with the information about the event.<br>With the result returned, getConcerts will then set the concerts state with the returned data and finally it sets the loading state toggle to false and sets the message state to an empty string. Otherwise, it sets the error message to valid us zip code to let the user know that a valid zip code is required.<br>My favorite part of the project was probably getting frustrated by new technology and learning about them and learning about myself in the process. I learned the different ways to persist state because I had no idea how to do it and figuring it out was pretty fun and rewarding.<br>With that I’ll pass it over to Keith, our team lead.</p>
 <p>I worked on the front and back end for User can pick from drop down, concert search and logging out features. I fixed the bug where posts from all users were showing for the current user because there was no filter to filter the returned data from the api call. Also another bug that I fixed was where the user information would disappear after page refresh, fixed it by storing state information via api call to the back end for the current user on mounting of app.<br>Keith ran into an issue where the chat component was calling a method to update messages in an infinite loops, I helped him fix it by using a conditional to check for state changes in the componentDidUpdate method as well as moving the getmessages method to another places where appropriate.</p>
 
   </div>
