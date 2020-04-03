@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="What I did yesterday?Prepared for presentation and wrote down what I wanted to say What I’m doing today?Learning about data structures and planning for personal portfolio What is blocking me?">
+    <meta name="description" content="What I did yesterday?Prepared for presentation and wrote down what I wanted to say What I’m doing today?Learning about data structures and planning for personal portfolio What is blocking me? I’m work">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Number(91).toString(2);">
 <meta property="og:url" content="http://jackmchou.github.io/2020/04/01/2020-04-1/index.html">
 <meta property="og:site_name" content="Daily Progress">
-<meta property="og:description" content="What I did yesterday?Prepared for presentation and wrote down what I wanted to say What I’m doing today?Learning about data structures and planning for personal portfolio What is blocking me?">
+<meta property="og:description" content="What I did yesterday?Prepared for presentation and wrote down what I wanted to say What I’m doing today?Learning about data structures and planning for personal portfolio What is blocking me? I’m work">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-04-01T15:34:41.000Z">
-<meta property="article:modified_time" content="2020-04-01T15:34:41.169Z">
+<meta property="article:modified_time" content="2020-04-02T14:25:13.046Z">
 <meta property="article:author" content="JC">
 <meta name="twitter:card" content="summary">
     
@@ -76,6 +76,8 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/2020/04/02/2020-04-2/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
         
         <li><a class="icon" href="/2020/03/31/2020-03-31/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
@@ -131,7 +133,7 @@
       
         <time datetime="2020-04-01T15:34:41.000Z" itemprop="datePublished">2020-04-01</time>
         
-        (Updated: <time datetime="2020-04-01T15:34:41.169Z" itemprop="dateModified">2020-04-01</time>)
+        (Updated: <time datetime="2020-04-02T14:25:13.046Z" itemprop="dateModified">2020-04-02</time>)
         
       
     </div>
@@ -149,6 +151,11 @@
     <p>What I did yesterday?<br>Prepared for presentation and wrote down what I wanted to say</p>
 <p>What I’m doing today?<br>Learning about data structures and planning for personal portfolio</p>
 <p>What is blocking me?</p>
+<p>I’m working on the includes problem of the stacks exercise. I’m trying to restore the stack to its original state after having checked each of its values against the value argument. But with a while loop I’m unable to include the stack.push(secondStack.pop()) statement within without creating an infinite loop. This is my code so far, I’m quite stuck.<br>function includes(value, stack) {<br>    const secondStack = new Stack();<br>    while (stack.peek() !== value) {<br>        secondStack.push(stack.pop());<br>        if (stack.peek() === value) {<br>            return true;<br>        } else if (stack.peek() === undefined) {<br>            return false;<br>        }<br>    }<br>}</p>
+<p>While the top item of the stack does not equal to value<br>push the top item of the stack to the second stack<br>if the top item of the stack is equal to value return true<br>else if the top item of the stack is undefined return false</p>
+<p>if the top item of the stack does not equal to value<br>move the top item of the stack to the second stack</p>
+<p>stackVal = 45<br>secondStack = 45<br>stackVal = 44<br>secondStack = 45, 44<br>stackVal = 22<br>secondStack = 45, 44, 22,</p>
+<p>while the top item of the stack is valid pop off the top and store in stackVal<br>while the top item of the second stack is less than stackVal</p>
 
   </div>
 </article>
