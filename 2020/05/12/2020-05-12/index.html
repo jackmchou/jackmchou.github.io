@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="What I did yesterday?Learned about react portals What I’m doing today?Finish implementing react portals What is blocking me? What is a JS prototype?JS prototype are mechanisms that allows What is JS i">
+    <meta name="description" content="What I did yesterday?Learned about react portals What I’m doing today?Finish implementing react portals What is blocking me? What is a JS prototype?JS prototype are mechanisms that allows JS objects t">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Number(132).toString(2);">
 <meta property="og:url" content="http://jackmchou.github.io/2020/05/12/2020-05-12/index.html">
 <meta property="og:site_name" content="Daily Progress">
-<meta property="og:description" content="What I did yesterday?Learned about react portals What I’m doing today?Finish implementing react portals What is blocking me? What is a JS prototype?JS prototype are mechanisms that allows What is JS i">
+<meta property="og:description" content="What I did yesterday?Learned about react portals What I’m doing today?Finish implementing react portals What is blocking me? What is a JS prototype?JS prototype are mechanisms that allows JS objects t">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-05-12T14:41:50.000Z">
-<meta property="article:modified_time" content="2020-05-12T20:15:22.034Z">
+<meta property="article:modified_time" content="2020-05-12T21:28:32.130Z">
 <meta property="article:author" content="JC">
 <meta name="twitter:card" content="summary">
     
@@ -76,6 +76,8 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/2020/05/13/2020-05-13/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
         
         <li><a class="icon" href="/2020/05/11/2020-05-11/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
@@ -131,7 +133,7 @@
       
         <time datetime="2020-05-12T14:41:50.000Z" itemprop="datePublished">2020-05-12</time>
         
-        (Updated: <time datetime="2020-05-12T20:15:22.034Z" itemprop="dateModified">2020-05-12</time>)
+        (Updated: <time datetime="2020-05-12T21:28:32.130Z" itemprop="dateModified">2020-05-12</time>)
         
       
     </div>
@@ -149,8 +151,30 @@
     <p>What I did yesterday?<br>Learned about react portals</p>
 <p>What I’m doing today?<br>Finish implementing react portals</p>
 <p>What is blocking me?</p>
-<p>What is a JS prototype?<br>JS prototype are mechanisms that allows</p>
-<p>What is JS inheritance?</p>
+<p>What is a JS prototype?<br>JS prototype are mechanisms that allows JS objects to inherit features from one another</p>
+<p>What is JS inheritance?<br>Objects in JavaScript are dictionaries. Each of them has a magic <strong>proto</strong> field that can point to any object which will be the prototype of the first one.</p>
+<p>When you look up a field on the object using either obj.field or obj[“field”] syntax (they are different way of doing the same thing), and the field is not present in the object, the JS runtime looks for the same field on the prototype. If the field still can’t be found, the property is looked up on the prototype of the prototype, etc…</p>
+<p>const a = { x: 5 };</p>
+<p>console.log(a.x, a.y, a.z); // 5, undefined, undefined; there’s no y or z here</p>
+<p>But if we add a prototype:</p>
+<p>a.<strong>proto</strong> = { y: 6 };</p>
+<p>console.log(a.x, a.y, a.z); // 5, 6, undefined; still no z, obviously</p>
+<p>a.<strong>proto</strong>.<strong>proto</strong> = { z: 7 }</p>
+<p>console.log(a.x, a.y, a.z); // 5, 6, 7</p>
+<p>If you set a.y or a.z it will create those fields on a and will leave the prototypes alone:</p>
+<p>a.z = 8;</p>
+<p>console.log(a.z, a.<strong>proto</strong>.<strong>proto</strong>.z); // 8, 7</p>
+<p>Constructors are a way to automate the initialization of the fields of an object, and assigning it’s prototype.</p>
+<p>function B (y) {<br>  this.y = y;<br>  console.log(this.<strong>proto</strong> === B.prototype); // true<br>}<br>B.prototype.z = 7;<br>const b = new B(9);</p>
+<p>console.log(b.y, b,z); // 9, 7</p>
+<p>Here, calling new B(9) creates a new object under the scene, sets its <strong>proto</strong> to B.prototype, and passes it to the B function as this.</p>
+<p>You can create further prototype chains:</p>
+<p>function A() {<br>  this.x = 5;<br>  console.log(<br>    this.<strong>proto</strong> === A.prototype,<br>    this.<strong>proto</strong>.<strong>proto</strong> === B.prototype<br>  );<br>}<br>A.prototype = new B(6)</p>
+<p>const aa = new A()</p>
+<p>console.log(aa.x, aa.y, aa.z); // 5, 6, 7</p>
+<p>Calling new also does some magic such that the instanceofoperator also works.</p>
+<p>Note that the this.<strong>proto</strong> === … lines are true only when the functions are called with the new operator.</p>
+<p>If you call them normally, this will be null or point to the global object depending on whether you’ve enabled strict mode or not (or to foo if you use A.call(foo) or A.apply(foo)).</p>
 <ul>
 <li>When a user add an item (from the item details) to their cart, they should be presented with the option to “Continue Shopping” (navigates to product list) and either “View Cart” (navigates to cart) or “Checkout” (navigates to checkout).<ul>
 <li>These options should be easy to notice, near the center of the page.</li>
