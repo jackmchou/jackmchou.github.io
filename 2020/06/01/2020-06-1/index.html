@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="What I did yesterday?practice problems and rest What I’m doing today?Work on the salesforce flows module on trailhead What is blocking me?">
+    <meta name="description" content="What I did yesterday?practice problems and rest What I’m doing today?Cleaning up the company database of duplicate contacts and accounts. Work on the salesforce flows module on trailhead What is block">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Number(152).toString(2);">
 <meta property="og:url" content="http://jackmchou.github.io/2020/06/01/2020-06-1/index.html">
 <meta property="og:site_name" content="Daily Progress">
-<meta property="og:description" content="What I did yesterday?practice problems and rest What I’m doing today?Work on the salesforce flows module on trailhead What is blocking me?">
+<meta property="og:description" content="What I did yesterday?practice problems and rest What I’m doing today?Cleaning up the company database of duplicate contacts and accounts. Work on the salesforce flows module on trailhead What is block">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-01T15:30:26.000Z">
-<meta property="article:modified_time" content="2020-06-01T15:30:26.776Z">
+<meta property="article:modified_time" content="2020-06-01T20:10:36.636Z">
 <meta property="article:author" content="JC">
 <meta name="twitter:card" content="summary">
     
@@ -76,6 +76,8 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/2020/06/02/2020-06-2/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
         
         <li><a class="icon" href="/2020/05/31/2020-05-31/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
@@ -131,7 +133,7 @@
       
         <time datetime="2020-06-01T15:30:26.000Z" itemprop="datePublished">2020-06-01</time>
         
-        (Updated: <time datetime="2020-06-01T15:30:26.776Z" itemprop="dateModified">2020-06-01</time>)
+        (Updated: <time datetime="2020-06-01T20:10:36.636Z" itemprop="dateModified">2020-06-01</time>)
         
       
     </div>
@@ -147,8 +149,11 @@
 
   <div class="content" itemprop="articleBody">
     <p>What I did yesterday?<br>practice problems and rest</p>
-<p>What I’m doing today?<br>Work on the salesforce flows module on trailhead</p>
+<p>What I’m doing today?<br>Cleaning up the company database of duplicate contacts and accounts. Work on the salesforce flows module on trailhead</p>
 <p>What is blocking me?</p>
+<p>SELECT Id,Name FROM Contact WHERE Name IN (‘Amelia Irion’, ‘Sagar Padhiar’, ‘Jennifer Frame’, ‘Malcolm Armstrong’, ‘Claire Palmer’, ‘Krisanne Pook’, ‘Cristina Grace-Quarry’, ‘Mark Smith’)</p>
+<p>SELECT COUNT(Id), Name<br>FROM Contact<br>GROUP BY Name<br>Having COUNT(Id) &gt; 1 ORDER BY Count(Id) DESC<br>LIMIT 200</p>
+<p>Hey TJ, just wanted to reach out and touch base on where I’m at currently in the job search process. My priorities have shifted to focus more on my Salesforce role with Executive Networks(part time gig I have), and not actively searching.<br>I’ve let my boss know of my recent venture into learning Salesforce and have been assigned noticeably more responsibility as of late. It is my hope sometime down the line I’m able to negotiate for an appropriate rate within the company as I become more involved with the tech. The skill set I’ve gained @ LFZ have definitely been an asset in helping me branch deeper into the SF ecosystem. Of course, I’m not putting all of my eggs into this basket. The back-up plan will still be to start actively looking for other jobs if the negotiation outcome is not favorable. I believe I have a solid plan and opportunity on my hands, given a Salesforce developer with admin experience seems to be relatively in demand.<br>Thank you for your consideration and understanding,<br>Jack</p>
 
   </div>
 </article>
