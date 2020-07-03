@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="What I did yesterday?Practice problems, work, SASS rework for portfolio page What I’m doing today?Practice problems, work, SASS rework for portfolio page What is blocking me?">
+    <meta name="description" content="What I did yesterday?Practice problems, work, SASS rework for portfolio page What I’m doing today?Practice problems, work, SASS rework for portfolio page What is blocking me? Describe the difference b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Number(183).toString(2);">
 <meta property="og:url" content="http://jackmchou.github.io/2020/07/02/2020-07-2/index.html">
 <meta property="og:site_name" content="Daily Progress">
-<meta property="og:description" content="What I did yesterday?Practice problems, work, SASS rework for portfolio page What I’m doing today?Practice problems, work, SASS rework for portfolio page What is blocking me?">
+<meta property="og:description" content="What I did yesterday?Practice problems, work, SASS rework for portfolio page What I’m doing today?Practice problems, work, SASS rework for portfolio page What is blocking me? Describe the difference b">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-02T16:14:11.000Z">
-<meta property="article:modified_time" content="2020-07-02T16:14:39.054Z">
+<meta property="article:modified_time" content="2020-07-02T21:03:34.648Z">
 <meta property="article:author" content="JC">
 <meta name="twitter:card" content="summary">
     
@@ -76,6 +76,8 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/2020/07/03/2020-07-3/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
         
         <li><a class="icon" href="/2020/07/01/2020-07-1/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
@@ -131,7 +133,7 @@
       
         <time datetime="2020-07-02T16:14:11.000Z" itemprop="datePublished">2020-07-02</time>
         
-        (Updated: <time datetime="2020-07-02T16:14:39.054Z" itemprop="dateModified">2020-07-02</time>)
+        (Updated: <time datetime="2020-07-02T21:03:34.648Z" itemprop="dateModified">2020-07-02</time>)
         
       
     </div>
@@ -149,6 +151,16 @@
     <p>What I did yesterday?<br>Practice problems, work, SASS rework for portfolio page</p>
 <p>What I’m doing today?<br>Practice problems, work, SASS rework for portfolio page</p>
 <p>What is blocking me?</p>
+<p>Describe the difference between <script>, <script async> and <script defer>.</p>
+<ul>
+<li><script> - HTML parsing is blocked, the script is fetched and executed immediately, HTML parsing resumes after the script is executed.</li>
+<li><script async> - The script will be fetched in parallel to HTML parsing and executed as soon as it is available (potentially before HTML parsing completes). Use async when the script is independent of any other scripts on the page, for example, analytics.</li>
+<li><script defer> - The script will be fetched in parallel to HTML parsing and executed when the page has finished parsing. If there are multiple of them, each deferred script is executed in the order they were encoun­tered in the document. If a script relies on a fully-parsed DOM, the defer attribute will be useful in ensuring that the HTML is fully parsed before executing. There's not much difference in putting a normal <script> at the end of <body>. A deferred script must not contain document.write.
+
+</li>
+</ul>
+<p>How does one set the color of an SVG?</p>
+<p>Basic coloring can be done by setting two attributes on the node: fill and stroke. fill sets the color inside the object and stroke sets the color of the line drawn around the object. You can use the same CSS color naming schemes that you use in HTML, whether that's color names (that is red), RGB values (that is rgb(255,0,0)), Hex values, RGBA values, etc.</p>
 
   </div>
 </article>
