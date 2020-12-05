@@ -14,7 +14,7 @@
 <meta property="og:description" content="What I did yesterday?Practice problems, work What I’m doing today?Practice problem, work What is blocking me?  Terms of service and security page migration is complete Met with Linda last week to disc">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-12-02T13:15:39.000Z">
-<meta property="article:modified_time" content="2020-12-02T13:55:44.677Z">
+<meta property="article:modified_time" content="2020-12-05T02:03:22.903Z">
 <meta property="article:author" content="JC">
 <meta name="twitter:card" content="summary">
     
@@ -109,7 +109,7 @@
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Circuit-Playground-NeoPixel"><span class="toc-number">1.</span> <span class="toc-text">Circuit Playground NeoPixel</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#choose-which-demos-to-play"><span class="toc-number">2.</span> <span class="toc-text">choose which demos to play</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-means-play-0-means-don’t"><span class="toc-number">3.</span> <span class="toc-text">1 means play, 0 means don’t!</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -135,7 +135,7 @@
       
         <time datetime="2020-12-02T13:15:39.000Z" itemprop="datePublished">2020-12-02</time>
         
-        (Updated: <time datetime="2020-12-02T13:55:44.677Z" itemprop="dateModified">2020-12-02</time>)
+        (Updated: <time datetime="2020-12-05T02:03:22.903Z" itemprop="dateModified">2020-12-04</time>)
         
       
     </div>
@@ -159,7 +159,40 @@
 <li>Regarding Christina’s question, just having the first frame of the video be an ideal still picture would alleviate the issue of video playback not autoplaying for whatever reason.</li>
 <li>Need to break down the organization of the site into smaller pieces, figure out if bootstrap methodology is right for our purposes.</li>
 </ul>
+<h1 id="Circuit-Playground-NeoPixel"><a href="#Circuit-Playground-NeoPixel" class="headerlink" title="Circuit Playground NeoPixel"></a>Circuit Playground NeoPixel</h1><p>import time<br>import board<br>import neopixel<br>from adafruit_circuitplayground import cp</p>
+<p>from adafruit_led_animation.animation.blink import Blink<br>from adafruit_led_animation.animation.comet import Comet<br>from adafruit_led_animation.animation.chase import Chase</p>
+<p>from adafruit_led_animation.group import AnimationGroup<br>from adafruit_led_animation.sequence import AnimationSequence</p>
+<p>import adafruit_led_animation.color as color</p>
+<p>pixel_pin = board.A1<br>NUM_PIXELS = 432<br>pixels = neopixel.NeoPixel(pixel_pin, NUM_PIXELS, brightness=0.2,<br>auto_write=False)</p>
+<p>cp.pixels.brightness = 0.5</p>
+<p>animations = AnimationSequence(<br>    # Synchronized to 0.5 seconds. Ignores the second animation setting of 3 seconds.<br>    AnimationGroup(<br>        Blink(cp.pixels, 0.5, color.CYAN),<br>        Blink(pixels, 3.0, color.AMBER),<br>        sync=True,<br>    ),<br>    # Different speeds<br>    AnimationGroup(<br>        Comet(cp.pixels, 0.1, color.MAGENTA, tail_length=NUM_PIXELS),<br>        Comet(pixels, 0.01, color.MAGENTA, tail_length=NUM_PIXELS),<br>    ),<br>    # Different animations<br>    AnimationGroup(<br>        Blink(cp.pixels, 0.5, color.JADE),<br>        Comet(pixels, 0.05, color.TEAL, tail_length=NUM_PIXELS),<br>    ),<br>    # Sequential animations on the built-in NeoPixels then the NeoPixel strip<br>    Chase(cp.pixels, 0.05, size=2, spacing=3, color=color.PURPLE),<br>    Chase(pixels, 0.05, size=2, spacing=3, color=color.PURPLE),<br>    advance_interval=3.0,<br>    auto_clear=True,<br>    auto_reset=True,<br>)</p>
+<h1 id="choose-which-demos-to-play"><a href="#choose-which-demos-to-play" class="headerlink" title="choose which demos to play"></a>choose which demos to play</h1><h1 id="1-means-play-0-means-don’t"><a href="#1-means-play-0-means-don’t" class="headerlink" title="1 means play, 0 means don’t!"></a>1 means play, 0 means don’t!</h1><p>color_chase_demo = 1<br>flash_demo = 0<br>rainbow_demo = 0<br>rainbow_cycle_demo = 1</p>
+<p>def wheel(pos):<br>    # Input a value 0 to 255 to get a color value.<br>    # The colours are a transition r - g - b - back to r.<br>    if pos &lt; 0 or pos &gt; 255:<br>        return (0, 0, 0)<br>    if pos &lt; 85:<br>        return (255 - pos * 3, pos * 3, 0)<br>    if pos &lt; 170:<br>        pos -= 85<br>        return (0, 255 - pos * 3, pos * 3)<br>    pos -= 170<br>    return (pos * 3, 0, 255 - pos * 3)</p>
+<p>def color_chase(color, wait):<br>    for i in range(NUM_PIXELS):<br>        pixels[i] = color<br>        time.sleep(wait)<br>        pixels.show()<br>    time.sleep(0.5)</p>
+<p>def rainbow_cycle(wait):<br>    for j in range(255):<br>        for i in range(NUM_PIXELS):<br>            rc_index = (i * 256 // NUM_PIXELS) + j * 5<br>            pixels[i] = wheel(rc_index &amp; 255)<br>        pixels.show()<br>        time.sleep(wait)</p>
+<p>def rainbow(wait):<br>    for j in range(255):<br>        for i in range(len(pixels)):<br>            idx = int(i + j)<br>            pixels[i] = wheel(idx &amp; 255)<br>        pixels.show()<br>        time.sleep(wait)</p>
+<p>RED = (255, 0, 0)<br>YELLOW = (255, 150, 0)<br>GREEN = (0, 255, 0)<br>CYAN = (0, 255, 255)<br>BLUE = (0, 0, 255)<br>PURPLE = (180, 0, 255)<br>WHITE = (255, 255, 255)<br>OFF = (0, 0, 0)</p>
+<p>while True:<br>    animations.animate()<br>    if color_chase_demo:<br>        color_chase(RED, 0.01)  # Increase the number to slow down the color chase<br>        color_chase(YELLOW, 0.01)<br>        color_chase(GREEN, 0.01)<br>        color_chase(CYAN, 0.01)<br>        color_chase(BLUE, 0.01)<br>        color_chase(PURPLE, 0.01)<br>        color_chase(OFF, 0.01)</p>
+<pre><code>if flash_demo:
+    pixels.fill(RED)
+    pixels.show()
+    # Increase or decrease to change the speed of the solid color change.
+    time.sleep(1)
+    pixels.fill(GREEN)
+    pixels.show()
+    time.sleep(1)
+    pixels.fill(BLUE)
+    pixels.show()
+    time.sleep(1)
+    pixels.fill(WHITE)
+    pixels.show()
+    time.sleep(1)
 
+if rainbow_cycle_demo:
+    rainbow_cycle(0.05)  # Increase the number to slow down the rainbow.
+
+if rainbow_demo:
+    rainbow(0.05)  # Increase the number to slow down the rainbow.</code></pre>
   </div>
 </article>
 
@@ -186,7 +219,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Circuit-Playground-NeoPixel"><span class="toc-number">1.</span> <span class="toc-text">Circuit Playground NeoPixel</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#choose-which-demos-to-play"><span class="toc-number">2.</span> <span class="toc-text">choose which demos to play</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-means-play-0-means-don’t"><span class="toc-number">3.</span> <span class="toc-text">1 means play, 0 means don’t!</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
